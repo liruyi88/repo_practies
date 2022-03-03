@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <import resource="classpath:spring/spring-dao.xml"/>
+    <dubbo:application name="lagou-dubbo-server"/>
+    <dubbo:registry address="zookeeper://192.168.244.128:2181"/>
+    <dubbo:annotation package="com.lagou.service.impl"/>
+    <!--自动找消费者-->
+    <!--<dubbo:monitor protocol="registry"/>-->
+    <dubbo:service interface="com.lagou.service.UserService" class="com.lagou.service.impl.UserServiceImpl" id="userService"/>
+    <dubbo:provider timeout="20000"/>
+</beans>

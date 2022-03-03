@@ -1,0 +1,3 @@
+com\lagou\controller\UserController.class
+com\lagou\stub\UserServiceStub.class
+com\lagou\controller\ResponseResult.class
